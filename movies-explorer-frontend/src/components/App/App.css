@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+.body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+.page {
+  max-width: 1280px;
+  min-width: 320px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
