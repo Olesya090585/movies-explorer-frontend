@@ -11,13 +11,13 @@ function Notfound() {
   return (
     <section className="notfound">
       <div className="notfound__container">
-        <h2 class="notfound__title">404</h2>
+        <h2 className="notfound__title">404</h2>
         <p className="notfound__subtitle">Страница не найдена</p>
         <button
           onClick={goBack}
           type="button"
           aria-label="назад"
-          class="notfound__link"
+          className="notfound__link"
         >
           Назад
         </button>

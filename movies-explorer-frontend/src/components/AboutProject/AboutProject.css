@@ -51,7 +51,7 @@
   grid-template-rows: repeat(2, 36px);
   row-gap: 14px;
 }
-.about-project__interval__one {
+.about-project__interval-one {
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -61,7 +61,7 @@
   padding: 10px 9px;
   text-align: center;
 }
-.about-project__interval__two {
+.about-project__interval-two {
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -70,7 +70,7 @@
   background-color: #303030;
   color: #ffffff;
 }
-.about-project__interval__text {
+.about-project__interval-text {
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
@@ -114,10 +114,10 @@
     padding-bottom: 90px;
     grid-template-columns: 21% 79%;
   }
-  .about-project__interval__one {
+  .about-project__interval-one {
     padding: 12px 9px;
   }
-  .about-project__interval__two {
+  .about-project__interval-two {
     padding: 12px 9px;
   }
   .about-project__interval__text {
@@ -172,17 +172,17 @@
     grid-template-rows: repeat(2, 35px);
     row-gap: 10px;
   }
-  .about-project__interval__text {
+  .about-project__interval-text {
     font-size: 11px;
     font-weight: 500;
     line-height: 13.31px;
   }
-  .about-project__interval__one {
+  .about-project__interval-one {
     font-size: 11px;
     font-weight: 400;
     line-height: 13.31px;
   }
-  .about-project__interval__two {
+  .about-project__interval-two {
     font-size: 11px;
     font-weight: 400;
     line-height: 13.31px;

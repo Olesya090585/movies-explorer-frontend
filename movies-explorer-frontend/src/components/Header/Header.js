@@ -13,14 +13,7 @@ function Header({ isLogin, handleIsLogin }) {
     <header
       className={`header ${
         location.pathname !== "/" ? "header_black" : ""
-      } && ${
-        location.pathname === "/" ||
-        location.pathname === "/movies" ||
-        location.pathname === "/saved-movies" ||
-        location.pathname === "/profile"
-          ? ""
-          : "header__hidden"
-      }`}
+      }`} 
     >
       <div className="header__container">
         <Link to="/">
@@ -32,23 +25,19 @@ function Header({ isLogin, handleIsLogin }) {
         </Link>
         {!isLogin ? (
           <ul className="header__menu">
-            <Link
-              to="/signup"
-              type="button"
-              aria-label="регистрация"
+            <li
+              // to="/signup"
               className="header__button"
             >
               Регистрация
-            </Link>
-            <Link
-              to="/signin"
+            </li>
+            <li
+              // to="/signin"
               onClick={handleIsLogin}
-              type="button"
-              aria-label="войти"
-              className="header__button"
+              className="header__button header__button_green"
             >
               Войти
-            </Link>
+            </li>
           </ul>
         ) : (
           <>

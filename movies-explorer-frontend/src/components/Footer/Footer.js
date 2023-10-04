@@ -1,35 +1,34 @@
 import React from "react";
 import "../Footer/Footer.css";
-import { useLocation } from "react-router-dom";
 
 function Footer() {
-  const location = useLocation();
   return (
-    <footer
-      className={`footer ${
-        location.pathname === "/" ||
-        location.pathname === "/movies" ||
-        location.pathname === "/saved-movies" ||
-        location.pathname === "/profile"
-          ? ""
-          : "footer__hidden"
-      }`}
-    >
-      <div className="footer__container">
-        <h7 className="footer__title">
-          Учебный проект Яндекс.Практикум х BeatFilm.
-        </h7>
-        <div className="footer__block">
-          <p className="footer__copyright">&copy; 2023</p>
-          <ul className="footer__list">
-            <li className="footer__link">
-              <button className="footer__link-button">Яндекс.Практикум</button>
-            </li>
-            <li className="footer__link">
-              <button className="footer__link-button">Github</button>
-            </li>
-          </ul>
-        </div>
+    <footer className="footer">
+      <h6 className="footer__title">
+        Учебный проект Яндекс.Практикум х BeatFilm.
+      </h6>
+      <div className="footer__block">
+        <p className="footer__copyright">&copy; 2023</p>
+        <ul className="footer__list">
+          <li className="footer__link">
+            <a
+              href="https://practicum.yandex.ru"
+              target="blank"
+              className="footer__link-button"
+            >
+              Яндекс.Практикум
+            </a>
+          </li>
+          <li className="footer__link">
+            <a
+              href="https://github.com"
+              target="blank"
+              className="footer__link-button"
+            >
+              Github
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

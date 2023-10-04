@@ -17,7 +17,7 @@ function AboutMe() {
             книги, рисовать, слушать музыку. Недавно начала изучать
             веб-разработку, мечтаю сменить профессию.
           </p>
-          <p className="about-me__content-github">Github</p>
+          <a href="https://github.com/Olesya090585" target="blank" className="about-me__content-github">Github</a>
         </div>
       </div>
     </section>

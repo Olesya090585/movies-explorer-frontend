@@ -1,21 +1,22 @@
 .profile {
-  background: #202020;
   margin: 0 auto;
-}
-.profile__container {
-  max-width: 1280px;
+  max-width: 410px;
+  padding: 74px 30px 70px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 107px;
 }
 .profile__title {
   text-align: center;
-  margin: 74px auto 107px auto;
+  margin: 0;
+  padding: 0;
   font-size: 24px;
   font-weight: 500;
   line-height: 29.05px;
+  letter-spacing: 0,7px;
 }
 .profile__form {
   width: 410px;
@@ -32,6 +33,9 @@
   display: flex;
   justify-content: space-between;
   padding-top: 17px;
+}
+.profile__label_border-none{
+  border-bottom: none;
 }
 .profile__input {
   width: 70%;
@@ -64,24 +68,66 @@
   opacity: 0.7;
 }
 .profile__button_active {
-  color: red;
+  color: #EE3465;
+  ;
+}
+.profile__button-block-save {
+  width: 410px;
+  height: 45px;
+  background: #3456F3;
+  color: #ffffff;
+  margin-top: 236px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.profile__button-save {
+  align-items: center;
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.94px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+.profile__button-block-save:hover {
+  opacity: 0.8;
+}
+.profile__button-block-save_inactive {
+  color:#C2C2C2;
+  background: #F8F8F8;
+
+  ;
 }
 @media screen and (max-width: 1120px) {
+  .profile {
+    padding: 236px 30px 70px;
+    gap: 80px;
+  }
   .profile__title {
-    margin: 236px auto 80px auto;
+    /* margin: 236px auto 80px auto; */
   }
   .profile__button-block {
     margin-top: 191px;
   }
 }
 @media screen and (max-width: 485px) {
-  .profile__title {
-    margin: 70px auto 63px auto;
+  .profile {
+    padding: 70px 30px 40px;
+    gap: 63px;
   }
   .profile__form {
     width: 260px;
   }
+  .profile__button {
+    font-size: 12px;
+    line-height: 14.52px;
+    letter-spacing: 0px;
+  }
   .profile__button-block {
-    margin-top: 379px;
+    margin-top: 361px;
   }
 }

@@ -11,6 +11,9 @@
   flex-direction: column;
   align-items: center;
 }
+.login__logo-container{
+  align-self: self-start;
+}
 .login__logo {
   align-self: self-start;
   margin-top: 70px;
@@ -23,9 +26,11 @@
 }
 .login__title {
   align-self: self-start;
-  margin-top: 40px;
+  margin-top: 35px;
   margin-bottom: 20px;
-  letter-spacing: -0.7px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.05px;
 }
 .login__form {
   width: 100%;
@@ -94,12 +99,15 @@
   opacity: 0.8;
 }
 @media screen and (max-width: 1120px) {
+  .login {
+    height: 100%;
+  }
   .login__container {
     padding-top: 161px;
   }
   .login__title {
     align-self: self-start;
-    margin-top: 40px;
+    margin-top: 37px;
     margin-bottom: 20px;
   }
 }
@@ -109,13 +117,16 @@
     max-width: 260px;
     min-height: 266px;
   }
+  .login__logo-container{
+    align-self: center;
+  }
   .login__logo {
     align-self: center;
     margin-top: 0;
   }
   .login__title {
     align-self: center;
-    margin-top: 50px;
+    margin-top: 46px;
     margin-bottom: 60px;
   }
   .login__button {

@@ -10,13 +10,13 @@ function Promo() {
           <br />
           Веб&#8209;разработки.
         </h1>
-        <p class="promo__subtitle">
+        <p className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <div class="promo__illustration"></div>
-        <button type="button" aria-label="узнать больше" class="promo__link">
+        <div className="promo__illustration"></div>
+        <a href="#techs" className="promo__link">
           Узнать больше
-        </button>
+        </a>
       </div>
     </section>
   );

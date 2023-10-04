@@ -24,10 +24,10 @@
   position: relative;
 }
 .movie__name {
-  margin: 11px auto 10px 12px;
+  margin: 10px auto 10px 12px;
   font-size: 13px;
   font-weight: 500;
-  line-height: 15.73px;
+  line-height: 16.28px;
 }
 .movie__duration {
   margin: 0px auto 14px 12px;
@@ -54,7 +54,7 @@
   width: 16px;
   height: 16px;
   background-position: 50% 50%;
-  background-size: contain;
+  background-size: 70%;
   border-radius: 0%;
   border: none;
   padding: 4px;
@@ -64,11 +64,17 @@ button.movies__button:active {
   transition: background 0s;
 }
 @media screen and (max-width: 1120px) {
+  .movie__name {
+    line-height: 15px;
+  }
   .movie__image {
     height: 190px;
   }
 }
 @media screen and (max-width: 690px) {
+  .movie__name {
+    line-height: 16.28px;
+  }
   .movie__image {
     height: 168px;
   }

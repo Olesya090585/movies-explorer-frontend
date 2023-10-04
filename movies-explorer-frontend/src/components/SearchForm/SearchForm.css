@@ -26,7 +26,6 @@
   align-self: center;
   padding-bottom: 13px;
   box-sizing: border-box;
-  letter-spacing: 0.9px;
 }
 .search__button {
   padding: 0;
@@ -42,6 +41,9 @@
   cursor: pointer;
   box-sizing: border-box;
   align-self: center;
+}
+.search__button:hover{
+  opacity: 0.8;
 }
 @media screen and (max-width: 1120px) {
   .search__container {

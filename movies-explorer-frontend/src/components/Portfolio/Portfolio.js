@@ -5,32 +5,17 @@ function Portfolio() {
   return (
     <section className="portfolio">
       <div className="portfolio__container">
-        <h7 className="portfolio__name">Портфолио</h7>
+        <h6 className="portfolio__name">Портфолио</h6>
         <ul className="portfolio__list">
-          <div className="portfolio__wrapper">
-            <li className="portfolio__list-item">Статичный сайт</li>
-            <button
-              type="button"
-              aria-label="статичный сайт"
-              className="portfolio__button"
-            ></button>
-          </div>
-          <div className="portfolio__wrapper">
-            <li className="portfolio__list-item">Адаптивный сайт</li>
-            <button
-              type="button"
-              aria-label="адаптивный сайт"
-              className="portfolio__button"
-            ></button>
-          </div>
-          <div className="portfolio__wrapper portfolio__wrapper_border">
-            <li className="portfolio__list-item">Одностраничное приложение</li>
-            <button
-              type="button"
-              aria-label="одностраничное приложение"
-              className="portfolio__button"
-            ></button>
-          </div>
+          <li className="portfolio__item">
+            <a href="https://github.com/Olesya090585/how-to-learn" target="blank" className="portfolio__link">Статичный сайт</a>
+          </li>
+          <li className="portfolio__item">
+            <a href="https://github.com/Olesya090585/russian-travel" target="blank" className="portfolio__link">Адаптивный сайт</a>
+          </li>
+          <li className="portfolio__item portfolio__item_border">
+            <a href="https://github.com/Olesya090585/react-mesto-api-full-gha" target="blank" className="portfolio__link">Одностраничное приложение</a>
+          </li>
         </ul>
       </div>
     </section>

@@ -7,11 +7,13 @@ function Register() {
   return (
     <section className="register">
       <div className="register__container">
+        <Link to="/" className="register__logo-container">
       <img
           className="register__logo"
           src={logo}
           alt="белая заглавная буква С в светло-зеленом кругу"
         />
+        </Link>
         <h1 className="register__title">Добро пожаловать!</h1>
         <form className="register__form" name="form">
           <label className="register__label">

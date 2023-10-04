@@ -4,6 +4,7 @@
 .checkbox-filter__container {
   display: inline-block;
   margin: 31px auto 115px 70px;
+  cursor: pointer;
 }
 .checkbox-filter__input {
   position: absolute;
@@ -30,7 +31,7 @@
   top: 0;
   width: 36px;
   height: 20px;
-  background-color: #202020;
+  background: #343434;
   border-radius: 30px;
   transition: background-color 0.3s;
 }
@@ -41,7 +42,7 @@
   width: 16px;
   height: 16px;
   border-radius: 15px;
-  background-color: #ffffff;
+  background-color: #a0a0a0;
   left: 3px;
   top: 2.5px;
   transition: background-color 0.3s, left 0.3s;

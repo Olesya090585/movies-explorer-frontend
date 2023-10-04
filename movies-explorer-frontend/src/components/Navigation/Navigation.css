@@ -1,6 +1,5 @@
 .navigation {
   display: flex;
-  /* gap: 375px; */
   width: 59%;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +42,6 @@
   color: #ffffff;
   text-align: center;
   align-items: center;
-  /* position: relative; */
   background-color: transparent;
   gap: 7px;
 }

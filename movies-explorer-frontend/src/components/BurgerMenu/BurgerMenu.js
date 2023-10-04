@@ -35,7 +35,7 @@ function BurgerMenu() {
           <nav className="burger-menu__list">
             <NavLink
               to="/"
-              target="_blank"
+              // target="_blank"
               className={({ isActive }) =>
                 `burger-menu__item ${
                   isActive ? "burger-menu__item_active" : ""
@@ -46,7 +46,7 @@ function BurgerMenu() {
             </NavLink>
             <NavLink
               to="/movies"
-              target="_blank"
+              // target="_blank"
               className={({ isActive }) =>
                 `burger-menu__item ${
                   isActive ? "burger-menu__item_active" : ""
@@ -57,7 +57,7 @@ function BurgerMenu() {
             </NavLink>
             <NavLink
               to="/saved-movies"
-              target="_blank"
+              // target="_blank"
               className={({ isActive }) =>
                 `burger-menu__item ${
                   isActive ? "burger-menu__item_active" : ""

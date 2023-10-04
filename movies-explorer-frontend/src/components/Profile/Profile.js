@@ -1,10 +1,12 @@
 import React from "react";
+import Header from '../Header/Header';
 import "../Profile/Profile.css";
 
 function Profile() {
   return (
+    <>
+    <Header />
     <section className="profile">
-      <div className="profile__container">
         <h1 className="profile__title">Привет, Олеся!</h1>
         <form className="profile__form" name="form">
           <label className="profile__label">
@@ -20,7 +22,7 @@ function Profile() {
               maxLength={40}
             />
           </label>
-          <label className="profile__label">
+          <label className="profile__label profile__label_border-none">
             E-mail
             <input
               className="profile__input"
@@ -44,9 +46,14 @@ function Profile() {
               Выйти из аккаунта
             </button>
           </div>
+          {/* <div className="profile__button-block-save">
+            <button className="profile__button-save" type="submit">
+              Сохранить
+            </button>
+          </div> */}
         </form>
-      </div>
     </section>
+    </>
   );
 }
 export default Profile;

@@ -1,7 +1,6 @@
 .register {
   background: #202020;
   margin: 0 auto;
-  height: 100vh;
 }
 .register__container {
   max-width: 396px;
@@ -11,6 +10,9 @@
   flex-direction: column;
   align-items: center;
   padding-top: 72px;
+}
+.register__logo-container {
+  align-self: self-start;
 }
 .register__logo {
   align-self: self-start;
@@ -101,7 +103,7 @@
   }
   .register__title {
     align-self: self-start;
-    margin-top: 40px;
+    margin-top: 35px;
     margin-bottom: 20px;
   }
 }
@@ -111,12 +113,15 @@
     max-width: 260px;
     min-height: 266px;
   }
+  .register__logo-container {
+    align-self: center;
+  }
   .register__logo {
     align-self: center;
   }
   .register__title {
     align-self: center;
-    margin-top: 50px;
+    margin-top: 45px;
     margin-bottom: 60px;
   }
   .register__button {

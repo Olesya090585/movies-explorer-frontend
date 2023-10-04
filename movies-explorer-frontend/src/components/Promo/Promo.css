@@ -50,6 +50,11 @@
   cursor: pointer;
   padding: 0;
   grid-area: link;
+  opacity: 0.6;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 10px;
+  box-sizing: border-box;
 }
 .promo__link:hover {
   opacity: 0.8;

@@ -20,7 +20,7 @@
 }
 .movie-list__show {
   padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 78px;
   display: flex;
 }
 .movie-list__show_size {
@@ -57,14 +57,9 @@
     row-gap: 36px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 339px));
   }
-  .movie-list__show_size {
-    padding-top: 90px;
-    padding-bottom: 90px;
-    display: flex;
-  }
-
   .movie-list__show {
     padding-top: 50px;
+    padding-bottom: 90px;
   }
 }
 @media screen and (max-width: 485px) {
@@ -82,5 +77,8 @@
   }
   .movie-list__button {
     width: 240px;
+  }
+  .movie-list__show_size {
+    padding-bottom: 89px;
   }
 }

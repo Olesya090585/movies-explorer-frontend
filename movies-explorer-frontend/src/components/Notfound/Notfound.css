@@ -1,8 +1,6 @@
 .notfound {
   width: 100%;
   margin: 0 auto;
-  /* height: 100vh; */
-  min-height: 700px;
   background: #202020;
 }
 .notfound__container {
@@ -48,9 +46,6 @@
 @media screen and (max-width: 768px) {
   .notfound {
     min-height: 1024px;
-  }
-  .notfound__container {
-    padding-left: 15px;
   }
   .notfound__title {
     margin: 408px 0 0;

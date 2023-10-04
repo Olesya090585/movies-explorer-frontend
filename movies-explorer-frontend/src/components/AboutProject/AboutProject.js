@@ -7,12 +7,12 @@ function AboutProject() {
       <div className="about-project__container">
         <h2 className="about-project__title">О проекте</h2>
         <article className="about-project__description">
-          <p className="about-project__description-title about-project__description-title_one">
+          <h3 className="about-project__description-title about-project__description-title_one">
             Дипломный проект включал 5 этапов
-          </p>
-          <p className="about-project__description-title about-project__description-title_three">
+          </h3>
+          <h3 className="about-project__description-title about-project__description-title_three">
             На выполнение диплома ушло 5 недель
-          </p>
+          </h3>
           <p className="about-project__description-text about-project__description-text_two">
             Составление плана, работу над бэкендом, вёрстку, добавление
             функциональности и финальные доработки.
@@ -23,10 +23,10 @@ function AboutProject() {
           </p>
         </article>
         <div className="about-project__interval">
-          <p className="about-project__interval__one">1 неделя</p>
-          <p className="about-project__interval__two">4 недели</p>
-          <p className="about-project__interval__text">Back-end</p>
-          <p className="about-project__interval__text">Front-end</p>
+          <p className="about-project__interval-one">1 неделя</p>
+          <p className="about-project__interval-two">4 недели</p>
+          <p className="about-project__interval-text">Back-end</p>
+          <p className="about-project__interval-text">Front-end</p>
         </div>
       </div>
     </section>
