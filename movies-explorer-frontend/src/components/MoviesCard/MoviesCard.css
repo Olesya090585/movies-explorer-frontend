@@ -11,10 +11,15 @@
 }
 .movie__image {
   width: 100%;
-  height: 151px;
-  object-fit: contain;
+  object-fit: cover;
+  aspect-ratio: 2.7/1.51;
   cursor: pointer;
+  transition: scale 0.3s;
 }
+.movie__imgage:hover {
+  scale: 1.2;
+}
+
 .movie__info {
   width: 100%;
   display: flex;
@@ -36,7 +41,7 @@
   line-height: 13.31px;
   color: #8b8b8b;
 }
-.movies__button {
+.movie__button {
   position: absolute;
   width: 16px;
   height: 16px;
@@ -47,8 +52,12 @@
   border: 2px solid #ffffff;
   background: transparent;
   transition: background 9999999s;
+  cursor: pointer;
 }
-.movies__button_delete {
+.movie__button:hover{
+  opacity: 0.8;
+}
+.movies__button-delete {
   background-image: url(../../images/burger_button-close.svg);
   background-repeat: no-repeat;
   width: 16px;
@@ -67,15 +76,18 @@ button.movies__button:active {
   .movie__name {
     line-height: 15px;
   }
-  .movie__image {
-    height: 190px;
-  }
 }
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 703px) {
+  .movie__image {
+    aspect-ratio: 3.39/1.9;
+  }
   .movie__name {
     line-height: 16.28px;
   }
+}
+@media screen and (max-width: 485px) {
   .movie__image {
-    height: 168px;
+    aspect-ratio: 3/1.68;
   }
+
 }

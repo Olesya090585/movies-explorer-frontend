@@ -2,10 +2,10 @@ import React from "react";
 import Header from '../Header/Header';
 import "../Profile/Profile.css";
 
-function Profile() {
+function Profile({ handleIsLogin, isLogin }) {
   return (
     <>
-    <Header />
+    <Header handleIsLogin={handleIsLogin} isLogin={isLogin}/>
     <section className="profile">
         <h1 className="profile__title">Привет, Олеся!</h1>
         <form className="profile__form" name="form">

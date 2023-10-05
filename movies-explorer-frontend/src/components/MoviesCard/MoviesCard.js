@@ -21,8 +21,8 @@ import "../MoviesCard/MoviesCard.css";
 
 function MoviesCard() {
   const location = useLocation();
-  const classButton = `movies__button ${
-    location.pathname === "/saved-movies" ? "movies__button_delete" : ""
+  const classButton = `movie__button ${
+    location.pathname === "/saved-movies" ? "movie__button-delete" : ""
   }`;
   return (
     <>

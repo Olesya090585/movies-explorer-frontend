@@ -21,7 +21,7 @@ function App() {
             <Route path="/" element={<Main handleIsLogin={handleIsLogin} isLogin={isLogin} />} />
             <Route path="/movies" element={<Movies handleIsLogin={handleIsLogin} isLogin={isLogin}/>} />
             <Route path="/saved-movies" element={<SavedMovies handleIsLogin={handleIsLogin} isLogin={isLogin}/>} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile handleIsLogin={handleIsLogin} isLogin={isLogin} />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/signin" element={<Login />} />
             <Route path="*" element={<Notfound />} />

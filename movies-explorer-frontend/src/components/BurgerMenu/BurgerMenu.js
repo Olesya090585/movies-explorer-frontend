@@ -11,34 +11,33 @@ function BurgerMenu() {
   return (
     <>
       <button
-        className={`burger-menu__button ${
-          isMenuOpen ? "burger-menu__button_invisible" : ""
+        className={`burger-menu-button ${
+          isMenuOpen ? "burger-menu-button_invisible" : ""
         }`}
         onClick={handleMenuClick}
       ></button>
       <div
-        className={`burger-menu__container ${
-          isMenuOpen ? "burger-menu__container_active" : ""
+        className={`burger-menu-container ${
+          isMenuOpen ? "burger-menu-container_active" : ""
         }`}
         onClick={handleMenuClick}
       >
         <button
-          className="burger-menu__button-close"
+          className="burger-menu-button-close"
           onClick={handleMenuClick}
         />
         <div
-          className={`burger-menu__content ${
-            isMenuOpen ? "burger-menu__content_active" : ""
+          className={`burger-menu-content ${
+            isMenuOpen ? "burger-menu-content_active" : ""
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <nav className="burger-menu__list">
+          <nav className="burger-menu-list">
             <NavLink
               to="/"
-              // target="_blank"
               className={({ isActive }) =>
-                `burger-menu__item ${
-                  isActive ? "burger-menu__item_active" : ""
+                `burger-menu-item ${
+                  isActive ? "burger-menu-item_active" : ""
                 }`
               }
             >
@@ -46,10 +45,9 @@ function BurgerMenu() {
             </NavLink>
             <NavLink
               to="/movies"
-              // target="_blank"
               className={({ isActive }) =>
-                `burger-menu__item ${
-                  isActive ? "burger-menu__item_active" : ""
+                `burger-menu-item ${
+                  isActive ? "burger-menu-item_active" : ""
                 }`
               }
             >
@@ -57,10 +55,9 @@ function BurgerMenu() {
             </NavLink>
             <NavLink
               to="/saved-movies"
-              // target="_blank"
               className={({ isActive }) =>
-                `burger-menu__item ${
-                  isActive ? "burger-menu__item_active" : ""
+                `burger-menu-item ${
+                  isActive ? "burger-menu-item_active" : ""
                 }`
               }
             >
@@ -69,8 +66,7 @@ function BurgerMenu() {
           </nav>
           <NavLink
             to="/profile"
-            target="_blank"
-            className="burger-menu__profile"
+            className="burger-menu-profile"
           >
             Аккаунт
           </NavLink>

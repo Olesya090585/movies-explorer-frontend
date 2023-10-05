@@ -1,9 +1,8 @@
 .about-me {
-  /* background-color: #202020; */
+  background-color: #202020;
 }
 .about-me__container {
   max-width: 1280px;
-  /* min-height: 608px; */
   padding-right: 70px;
   padding-left: 70px;
   margin: 0 auto;
@@ -74,6 +73,9 @@
   line-height: 16.94px;
   padding-top: 99px;
 }
+.about-me__content-github:hover{
+opacity: 0.7;
+}
 @media screen and (max-width: 1120px) {
   .about-me__container {
     width: calc(100% - (auto * 2));
@@ -134,7 +136,6 @@
     line-height: 21.78px;
   }
   .about-me__content {
-    /* justify-items: center; */
     grid-template-columns: minmax(292px, 1fr);
     grid-template-areas:
       "foto"

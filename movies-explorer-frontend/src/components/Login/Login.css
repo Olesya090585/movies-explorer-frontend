@@ -1,11 +1,10 @@
 .login {
   background: #202020;
   margin: 0 auto;
-  height: 100vh;
 }
 .login__container {
   max-width: 396px;
-  min-height: 700px;
+  /* min-height: 700px; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -99,9 +98,6 @@
   opacity: 0.8;
 }
 @media screen and (max-width: 1120px) {
-  .login {
-    height: 100%;
-  }
   .login__container {
     padding-top: 161px;
   }
@@ -115,7 +111,6 @@
   .login__container {
     padding-top: 56px;
     max-width: 260px;
-    min-height: 266px;
   }
   .login__logo-container{
     align-self: center;

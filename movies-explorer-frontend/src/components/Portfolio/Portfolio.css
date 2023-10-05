@@ -5,13 +5,14 @@
 .portfolio__container {
   margin: 0 auto;
   max-width: 1280px;
-  padding: 101px 70px 125px 70px;
+  padding: 101px 70px 115px 70px;
 }
 .portfolio__name {
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
   color: #8b8b8b;
+  margin: 0;
 }
 .portfolio__list {
   padding: 47px 0 0 0;
@@ -27,9 +28,12 @@
   display: flex;
   border-bottom: 1px solid #424242;
   justify-content: space-between;
-  padding-bottom: 19px;
+  padding-bottom: 10px;
 }
 .portfolio__link {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   text-decoration: none;
   color: #ffffff;
   font-size: 30px;
@@ -40,13 +44,18 @@
 .portfolio__link:hover {
   opacity: 0.7;
 }
-.portfolio__item:after {
-  content: "";
+.portfolio__item-text {
+  padding: 0;
+  margin: 0;
+}
+.portfolio__item-img {
   width: 29px;
-  height: 50px;
-  background: url("../../images/strelka.svg");
+  height: 60px;
+  background-image: url("../../images/strelka.svg");
   background-repeat: no-repeat;
-  background-position: 5px 20px;
+  z-index: 1;
+  background-size: 60%;
+  background-position: center;
 }
 .portfolio__item_border {
   border-bottom: none;
@@ -56,17 +65,22 @@
 @media screen and (max-width: 1120px) {
   .portfolio__container {
     width: calc(100% - (auto * 2));
-    padding: 91px 50px 89px 50px;
+    padding: 91px 50px 70px 50px;
   }
   .portfolio__list {
     padding: 50px 0 0 0;
+    row-gap: 19px;
+  }
+  .portfolio__item {
+    padding-bottom: 10px;
   }
   .portfolio__link {
     font-size: 28px;
   }
-  .portfolio__item:after {
-    background-position: 50% 50%;
+  .portfolio__item-img {
+    width: 27px;
     background-size: 55%;
+    background-position: 5px 20px;
   }
 }
 @media screen and (max-width: 560px) {
@@ -83,6 +97,7 @@
   }
   .portfolio__list {
     padding: 40px 0 0 0;
+    row-gap: 20px;
   }
   .portfolio__link {
     font-size: 18px;
@@ -90,10 +105,10 @@
     align-self: center;
     letter-spacing: -0.7px;
   }
-  .portfolio__item:after {
+  .portfolio__item-img {
     width: 18px;
     height: 28px;
-    background-position: 50% 50%;
     background-size: 60%;
+    background-position: center;
   }
 }

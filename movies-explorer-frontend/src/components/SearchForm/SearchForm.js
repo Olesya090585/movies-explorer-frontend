@@ -6,7 +6,7 @@ function SearchForm() {
   return (
     <aside className="search">
       <div className="search__container">
-        <form className="search__form" action="" method="get">
+        <form className="search__form">
           <input
             className="search__input"
             name="search"
