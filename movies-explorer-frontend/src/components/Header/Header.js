@@ -24,36 +24,37 @@ function Header({ isLogin, handleIsLogin }) {
           />
         </Link>
         {!isLogin ? (
-          // <div className="header__menu">
-          //   <Link
-          //     to="/signup"
-          //     className="header__button"
-          //   >
-          //     Регистрация
-          //   </Link>
-          //   <Link
-          //     to="/signin"
-          //     onClick={handleIsLogin}
-          //     className="header__button header__button_green"
-          //   >
-          //     Войти
-          //   </Link>
-          // </div>
           <div className="header__menu">
-          <div
-            // to="/signup"
-            className="header__button"
-          >
-            Регистрация
+            <Link
+              to="/signup"
+              className="header__button"
+            >
+              Регистрация
+            </Link>
+            <Link
+              to="/signin"
+              onClick={handleIsLogin}
+              className="header__button header__button_green"
+            >
+              Войти
+            </Link>
           </div>
-          <div
-            // to="/signin"
-            onClick={handleIsLogin}
-            className="header__button header__button_green"
-          >
-            Войти
-          </div>
-        </div>
+        //для проверки бургер-меню
+        //   <div className="header__menu">
+        //   <div
+        //     // to="/signup"
+        //     className="header__button"
+        //   >
+        //     Регистрация
+        //   </div>
+        //   <div
+        //     // to="/signin"
+        //     onClick={handleIsLogin}
+        //     className="header__button header__button_green"
+        //   >
+        //     Войти
+        //   </div>
+        // </div>
         ) : (
           <>
             <Navigation />
