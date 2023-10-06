@@ -1,0 +1,93 @@
+.movie {
+  width: 100%;
+  min-height: 218px;
+  background-color: #222222;
+  box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5%;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  align-content: center;
+}
+.movie__image {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 2.7/1.51;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+.movie__imgage:hover {
+  scale: 1.2;
+}
+
+.movie__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  position: relative;
+}
+.movie__name {
+  margin: 10px auto 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16.28px;
+}
+.movie__duration {
+  margin: 0px auto 14px 12px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13.31px;
+  color: #8b8b8b;
+}
+.movie__button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  bottom: 37px;
+  right: 12px;
+  object-position: 100% 100%;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: transparent;
+  transition: background 9999999s;
+  cursor: pointer;
+}
+.movie__button:hover{
+  opacity: 0.8;
+}
+.movies__button-delete {
+  background-image: url(../../images/burger_button-close.svg);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  background-position: 50% 50%;
+  background-size: 70%;
+  border-radius: 0%;
+  border: none;
+  padding: 4px;
+}
+button.movies__button:active {
+  background: #2be080;
+  transition: background 0s;
+}
+@media screen and (max-width: 1120px) {
+  .movie__name {
+    line-height: 15px;
+  }
+}
+@media screen and (max-width: 703px) {
+  .movie__image {
+    aspect-ratio: 3.39/1.9;
+  }
+  .movie__name {
+    line-height: 16.28px;
+  }
+}
+@media screen and (max-width: 485px) {
+  .movie__image {
+    aspect-ratio: 3/1.68;
+  }
+
+}

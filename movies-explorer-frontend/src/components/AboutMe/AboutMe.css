@@ -1,0 +1,174 @@
+.about-me {
+  background-color: #202020;
+}
+.about-me__container {
+  max-width: 1280px;
+  padding-right: 70px;
+  padding-left: 70px;
+  margin: 0 auto;
+}
+.about-me__title {
+  margin: 0;
+  padding: 110px 0 21px 0;
+  border-bottom: 1px solid #dadada;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: -0.7px;
+}
+.about-me__content {
+  display: grid;
+  grid-template-columns: minmax(292px, 600px), 270px;
+  column-gap: 270px;
+  grid-template-areas:
+    "name foto"
+    "about foto"
+    "description foto"
+    "github foto";
+}
+.about-me__content-foto {
+  grid-area: foto;
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  background-image: url(../../images/foto.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  right: 50%;
+  margin-top: 66px;
+}
+.about-me__content-name {
+  margin: 0;
+  grid-area: name;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  padding-top: 65px;
+  letter-spacing: -0.7px;
+}
+.about-me__content-job {
+  margin: 0;
+  grid-area: about;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  padding-top: 18px;
+}
+.about-me__content-description {
+  margin: 0;
+  grid-area: description;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  padding-top: 26px;
+  text-align: justify;
+}
+.about-me__content-github {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0;
+  grid-area: github;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.94px;
+  padding-top: 99px;
+}
+.about-me__content-github:hover{
+opacity: 0.7;
+}
+@media screen and (max-width: 1120px) {
+  .about-me__container {
+    width: calc(100% - (auto * 2));
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  .about-me__title {
+    padding: 90px 0 22px 0;
+    line-height: 26.63px;
+    letter-spacing: -0.7px;
+  }
+  .about-me__content {
+    grid-template-columns: minmax(348px, 1fr), 255px;
+    column-gap: 49px;
+    grid-template-areas:
+      "name foto"
+      "about foto"
+      "description foto"
+      "github foto";
+  }
+  .about-me__content-foto {
+    grid-area: foto;
+    width: 255px;
+    height: 307px;
+  }
+  .about-me__content-name {
+    padding-top: 67px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: -4%;
+  }
+  .about-me__content-job {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    padding-top: 15px;
+  }
+  .about-me__content-description {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    padding-top: 20px;
+  }
+  .about-me__content-github {
+    padding-top: 87px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .about-me__container {
+    padding-right: 14px;
+    padding-left: 14px;
+    margin: 0 auto;
+  }
+  .about-me__title {
+    padding: 70px 0 27px 0;
+    font-size: 18px;
+    line-height: 21.78px;
+  }
+  .about-me__content {
+    grid-template-columns: minmax(292px, 1fr);
+    grid-template-areas:
+      "foto"
+      "name"
+      "about"
+      "description"
+      "github";
+  }
+  .about-me__content-foto {
+    margin: 0 auto;
+    align-content: center;
+    width: 292px;
+    height: 352px;
+    margin-top: 60px;
+  }
+  .about-me__content-name {
+    font-size: 30px;
+    line-height: 36.31px;
+    padding-top: 40px;
+  }
+  .about-me__content-job {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 20px;
+  }
+  .about-me__content-description {
+    margin: 0 auto;
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 20px;
+  }
+  .about-me__content-github {
+    line-height: 16.94px;
+    padding-top: 40px;
+  }
+}
