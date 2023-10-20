@@ -3,7 +3,11 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import "../Register/Register.css";
 
-function Register() {
+function Register(onSubmit) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit();
+  }
   return (
     <section className="register">
       <div className="register__container">
@@ -55,7 +59,7 @@ function Register() {
               maxLength={40}
             />
             <span className="register__input-error register__input-error_type_password" />
-            <button type="submit" className="register__button">
+            <button type="submit" className="register__button" onSubmit={handleSubmit}>
           Зарегистрироваться
         </button>
         </form>

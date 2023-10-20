@@ -3,7 +3,12 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import "../Login/Login.css";
 
-function Login() {
+function Login(onSubmit) {
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit();
+  }
   return (
     <section className="login">
       <div className="login__container">
@@ -40,7 +45,7 @@ function Login() {
             maxLength={40}
           />
           <span className="login__input-error login__input-error_type_password" />
-          <button type="submit" className="login__button">
+          <button type="submit" className="login__button" onSubmit={handleSubmit}>
             Войти
           </button>
         </form>
