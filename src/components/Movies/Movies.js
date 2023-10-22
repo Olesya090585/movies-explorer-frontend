@@ -6,10 +6,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 import Footer from "../Footer/Footer";
 import "../Movies/Movies.css";
 
-function Movies({ handleIsLogin, isLogin }) {
+function Movies({ isLoggedIn}) {
   return (
     <>
-    <Header handleIsLogin={handleIsLogin} isLogin={isLogin}/>
+    <Header isLoggedIn={!isLoggedIn}/>
     <main className="movies">
       <SearchForm />
       {/* <Preloader /> */}

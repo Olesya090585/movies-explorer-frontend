@@ -18,11 +18,10 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
- 
-  function handleSubmitLogin(data) {
-    const { email, password } = data;
+  function handleSubmitLogin({ email, password }) {
     MainApi.login(email, password)
       .then((data) => {
+        console.log(data);
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
         // setError("");
@@ -30,55 +29,55 @@ function App() {
       })
       .catch((err) => {
         if (err.status === 400) {
-          return ("Вы ввели неправильный логин или пароль");
+          return "Вы ввели неправильный логин или пароль";
         }
-        console.error(`Ошибка: ${err}`);
+        console.error(err);
       });
-    }
-      // .finally(() => {
-      //   setIsSbmitting(false);
-      // });
+  }
+  // .finally(() => {
+  //   setIsSbmitting(false);
+  // });
 
-      function handleSubmitRegister(data) {
-        const { email, password, name } = data;
-        // setIsSbmitting(true);
-        MainApi.register(name, email, password)
-          .then(() => {
-            navigate("/signin");
-            handleSubmitLogin({ email, password });
-            // setError("");
-          })
-          .catch((err) => {
-            if (err.status === 409) {
-              return ("Пользователь с таким email уже зарегистирован");
-            }
-            console.error(`Ошибка: ${err}`);
-          });
-          // .finally(() => {
-          //   setIsSbmitting(false);
-          // });
-      }
-      function checkToken() {
-        const jwt = localStorage.getItem("token");
-        if (jwt) {
-          MainApi.getContent(jwt)
-            .then((data) => {
-              if (!data) {
-                return;
-              }
-              console.log(data);
-              setCurrentUser(data);
-              setLoggedIn(true);
-              // getMovies();
-            })
-            .catch(() => {
-              setLoggedIn(false);
-            });
+  function handleSubmitRegister({ name, email, password }) {
+    // const { email, password, name } = data;
+    // setIsSbmitting(true);
+    console.log(name);
+    MainApi.register(name, email, password)
+      .then(() => {
+        navigate("/signin");
+        handleSubmitLogin({ email, password });
+        // setError("");
+      })
+      .catch((err) => {
+        if (err.status === 409) {
+          return "Пользователь с таким email уже зарегистирован";
         }
-      }
- React.useEffect(() => {
-    checkToken();
-  }, []);
+        console.error(err);
+      });
+    // .finally(() => {
+    //   setIsSbmitting(false);
+    // });
+  }
+  function checkToken() {
+    const jwt = localStorage.getItem("token");
+    if (jwt) {
+      MainApi.getContent(jwt)
+        .then((data) => {
+          if (!data) {
+            return;
+          }
+          setCurrentUser(data);
+          setLoggedIn(true);
+          // getMovies();
+        })
+        .catch(() => {
+          setLoggedIn(false);
+        });
+    }
+  }
+  // React.useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   function handleLoggedIn() {
     setLoggedIn(true);
@@ -113,19 +112,16 @@ function App() {
 
           <Route
             path="/signup"
-                element={<Register
-                handleLoggedIn={handleLoggedIn}
+            element={
+              <Register
+                // handleLoggedIn={handleLoggedIn}
                 onSubmit={handleSubmitRegister}
               />
             }
           />
           <Route
             path="/signin"
-                element={<Login 
-                handleLoggedIn={handleLoggedIn}
-                onSubmit={handleSubmitLogin}
-              />
-            }
+            element={<Login onSubmit={handleSubmitLogin} />}
           />
           <Route path="*" element={<Notfound onBack={handlePageBack} />} />
         </Routes>

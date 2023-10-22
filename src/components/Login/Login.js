@@ -2,12 +2,14 @@ import React from "react";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import "../Login/Login.css";
+import { EMAIL_REGEX} from "../../utils/constans";
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-function Login(onSubmit) {
-
+function Login({onSubmit}) {
+  const { values, handleChange, errors, setErrors, isValid, resetForm } = useFormAndValidation();
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit();
+    onSubmit(values);
   }
   return (
     <section className="login">
@@ -20,32 +22,35 @@ function Login(onSubmit) {
         />
         </Link>
         <h1 className="login__title">Рады видеть!</h1>
-        <form className="login__form" name="form" onSubmit={handleSubmit}>
+        <form className="login__form" name="form" onSubmit={handleSubmit} noValidate>
           <label className="login__label">E-mail</label>
           <input
             className="login__input"
             type="email"
             name="email"
             placeholder="Ваш email"
-            // value=""
+            value={values.email || ''}
+            onChange={handleChange}
+            pattern={EMAIL_REGEX}
             required
             minLength={2}
             maxLength={40}
           />
-          <span className="login__input-error login__input-error_type_email" />
+          <span className="login__input-error login__input-error_type_email">{errors.name}</span>
           <label className="login__label">Пароль</label>
           <input
             className="login__input"
             type="password"
             name="password"
             placeholder="Введите пароль"
-            // value=""
+            value={values.password || ''}
+            onChange={handleChange}
             required
             minLength={2}
             maxLength={40}
           />
-          <span className="login__input-error login__input-error_type_password" />
-          <button type="submit" className="login__button">
+          <span className="login__input-error login__input-error_type_password">{errors.name}</span>
+          <button type="submit" className="login__button" onSubmit={handleSubmit}>
             Войти
           </button>
         </form>

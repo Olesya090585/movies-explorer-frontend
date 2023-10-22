@@ -1,12 +1,25 @@
 import React from "react";
-import Header from '../Header/Header';
+import Header from "../Header/Header";
 import "../Profile/Profile.css";
+import { useState} from "react";
+// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { EMAIL_REGEX, NAME_REGEX } from "../../utils/constans";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-function Profile({ handleIsLogin, isLogin }) {
+function Profile(isLoggedIn) {
+  // const [isEditProfile, setEditProfile] = useState(true);
+  // const { values, handleChange, errors, setErrors, isValid, resetForm } =
+  //   useFormAndValidation({ name: currentUser.name, email: currentUser.email });
+  // const validation =
+  //   currentUser.name === values.name && currentUser.email === values.email;
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   onSubmit(values);
+  // }
   return (
     <>
-    <Header handleIsLogin={handleIsLogin} isLogin={isLogin}/>
-    <section className="profile">
+      <Header isLogin={isLoggedIn} />
+      <section className="profile">
         <h1 className="profile__title">Привет, Олеся!</h1>
         <form className="profile__form" name="form">
           <label className="profile__label">
@@ -17,6 +30,7 @@ function Profile({ handleIsLogin, isLogin }) {
               name="name"
               placeholder="Ваше имя"
               value="Олеся"
+              pattern={NAME_REGEX}
               required
               minLength={2}
               maxLength={40}
@@ -30,6 +44,7 @@ function Profile({ handleIsLogin, isLogin }) {
               name="email"
               placeholder="Ваш email"
               value="email@ya.ru"
+              pattern={EMAIL_REGEX}
               required
               minLength={2}
               maxLength={40}
@@ -52,7 +67,7 @@ function Profile({ handleIsLogin, isLogin }) {
             </button>
           </div> */}
         </form>
-    </section>
+      </section>
     </>
   );
 }

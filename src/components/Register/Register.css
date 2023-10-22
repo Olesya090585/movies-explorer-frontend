@@ -97,6 +97,14 @@
 .register__login-link:hover {
   opacity: 0.8;
 }
+.register__input-error{
+  margin-top: 10px;
+  display: block;
+  color:#EE3465;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12.1px;
+}
 @media screen and (max-width: 1120px) {
   .register__container {
     padding-top: 232px;

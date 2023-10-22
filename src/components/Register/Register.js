@@ -2,12 +2,18 @@ import React from "react";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import "../Register/Register.css";
+import { EMAIL_REGEX, NAME_REGEX } from "../../utils/constans";
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-function Register(onSubmit) {
+function Register({onSubmit}) {
+
+  const { values, handleChange, errors, setErrors, isValid, resetForm } = useFormAndValidation();
+
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit();
+    onSubmit(values);
   }
+
   return (
     <section className="register">
       <div className="register__container">
@@ -19,7 +25,7 @@ function Register(onSubmit) {
         />
         </Link>
         <h1 className="register__title">Добро пожаловать!</h1>
-        <form className="register__form" name="form">
+        <form className="register__form" name="form" onSubmit={handleSubmit} >
           <label className="register__label">
             Имя</label>
             <input
@@ -27,12 +33,14 @@ function Register(onSubmit) {
               type="text"
               name="name"
               placeholder="Ваше имя"
-              // value=""
+              value={values.name || ''}
+              onChange={handleChange}
+              pattern={NAME_REGEX}
               required
               minLength={2}
               maxLength={40}
             />
-            <span className="register__input-error register__input-error_type_name" />
+            <span className="register__input-error">{errors.name}</span>
           <label className="register__label">
             E-mail</label>
             <input
@@ -40,26 +48,31 @@ function Register(onSubmit) {
               type="email"
               name="email"
               placeholder="Ваш email"
-              // value=""
+              value={values.email || ''}
+              onChange={handleChange}
+              pattern={EMAIL_REGEX}
               required
               minLength={2}
               maxLength={40}
             />
-            <span className="register__input-error register__input-error_type_email" />
-          <label className="register__label">
+            <span className="register__input-error">{errors.email}</span>
+          <label className="register__label" >
             Пароль</label>
             <input
-              className="register__input"
+              className={`register__input ${
+                errors.password ? "register__input_red" : ""
+              }`}
               type="password"
               name="password"
               placeholder="Введите пароль"
-              // value=""
+              value={values.password || ''}
+              onChange={handleChange}
               required
               minLength={2}
               maxLength={40}
             />
-            <span className="register__input-error register__input-error_type_password" />
-            <button type="submit" className="register__button" onSubmit={handleSubmit}>
+            <span className="register__input-error">{errors.password}</span>
+            <button type="submit" className="register__button">
           Зарегистрироваться
         </button>
         </form>
@@ -73,4 +86,5 @@ function Register(onSubmit) {
     </section>
   );
 }
+
 export default Register;
