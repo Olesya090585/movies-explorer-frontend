@@ -6,7 +6,7 @@ import Navigation from "../Navigation/Navigation";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { Link } from "react-router-dom";
 
-function Header({ isLogin, handleIsLogin }) {
+function Header({ isLoggedIn }) {
   const location = useLocation();
 
   return (
@@ -23,22 +23,11 @@ function Header({ isLogin, handleIsLogin }) {
             alt="белая заглавная буква С в светло-зеленом кругу"
           />
         </Link>
-        {!isLogin ? (
-          <div className="header__menu">
-            <Link
-              to="/signup"
-              className="header__button"
-            >
-              Регистрация
-            </Link>
-            <Link
-              to="/signin"
-              onClick={handleIsLogin}
-              className="header__button header__button_green"
-            >
-              Войти
-            </Link>
-          </div>
+        {isLoggedIn ? (
+           <>
+           <Navigation />
+           <BurgerMenu />
+         </>
         //для проверки бургер-меню
         //   <div className="header__menu">
         //   <div
@@ -57,8 +46,21 @@ function Header({ isLogin, handleIsLogin }) {
         // </div>
         ) : (
           <>
-            <Navigation />
-            <BurgerMenu />
+            <div className="header__menu">
+            <Link
+              to="/signup"
+              className="header__button"
+            >
+              Регистрация
+            </Link>
+            <Link
+              to="/signin"
+              // onClick={handleIsLogin}
+              className="header__button header__button_green"
+            >
+              Войти
+            </Link>
+          </div>
           </>
         )}
       </div>

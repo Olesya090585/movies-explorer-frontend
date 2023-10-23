@@ -3,12 +3,13 @@ import "../MoviesCardList/MoviesCardList.css";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
+function MoviesCardList({ isErrorLoadingMessage, movies }) {
   const location = useLocation();
   return (
     <section className="movie-list">
       <ul className="movie-list__container">
-        <MoviesCard></MoviesCard>
+      {movies.map((card) => (
+        <MoviesCard movies={movies} card={card}></MoviesCard>))}
       </ul>
       <div
         className={`movie-list__show ${

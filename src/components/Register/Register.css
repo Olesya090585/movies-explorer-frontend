@@ -63,9 +63,11 @@
 .register__input_red {
   color: red;
 }
+.register__block-button{
+  margin-top: 92px;
+}
 .register__button {
   align-self: center;
-  margin-top: 92px;
   width: 396px;
   height: 45px;
   background: #4285f4;
@@ -76,6 +78,10 @@
   line-height: 16.94px;
   cursor: pointer;
   letter-spacing: 0.7px;
+}
+.register__button-disable {
+  background: #F8F8F8;
+  color: #000000;
 }
 .register__button:hover {
   opacity: 0.8;
@@ -96,6 +102,14 @@
 }
 .register__login-link:hover {
   opacity: 0.8;
+}
+.register__form-error{
+  padding-top: 12px;
+  display: block;
+  color:#EE3465;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13.31px;
 }
 .register__input-error{
   margin-top: 10px;
@@ -131,8 +145,10 @@
     margin-top: 45px;
     margin-bottom: 60px;
   }
-  .register__button {
+  .register__block-button{
     margin-top: 180px;
+  }
+  .register__button {
     width: 260px;
     font-size: 12px;
     line-height: 14.52px;
