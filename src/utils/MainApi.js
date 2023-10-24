@@ -73,7 +73,7 @@ export class Api {
   }
 
   async getInitialMovies(token) {
-    const res = await fetch(`${this._baseUrl}/cards`, {
+    const res = await fetch(`${this._baseUrl}/movies`, {
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`,
