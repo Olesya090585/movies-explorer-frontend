@@ -1,6 +1,6 @@
-import React from 'react';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.js';
-import '../SearchForm/SearchForm.css';
+import React from "react";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox.js";
+import "../SearchForm/SearchForm.css";
 
 function SearchForm({ onSearch, isQuery, setIsQuery, onCheckbox, isShort }) {
   function hundleSubmit(e) {
@@ -25,8 +25,9 @@ function SearchForm({ onSearch, isQuery, setIsQuery, onCheckbox, isShort }) {
           />
           <button className="search__button" type="submit"></button>
         </form>
+        <FilterCheckbox onCheckbox={onCheckbox} isShort={isShort} />
       </div>
-      <FilterCheckbox onCheckbox={onCheckbox} isShort={isShort} />
+      {/* <FilterCheckbox onCheckbox={onCheckbox} isShort={isShort} /> */}
     </aside>
   );
 }

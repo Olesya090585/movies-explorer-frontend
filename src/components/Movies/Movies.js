@@ -4,6 +4,7 @@ import SearchForm from "../SearchForm/SearchForm.js";
 // import Preloader from '../Preloader/Preloader.js';
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
 // import { useFilter } from "../../hooks/useFilter";
 // import { searchMovies } from "../../utils/utils";
 import "../Movies/Movies.css";
@@ -19,8 +20,9 @@ function Movies({
   setIsQuery,
   onCheckbox,
   isShort,
-  handleSaveMovie, 
-  saveMovieId
+  handleSaveMovie,
+  onDelete,
+  saveMovieId,
 }) {
   // const [moviesShort, setMoviesShort] = useState(false);
   // const filter = useFilter(movies, moviesShort);
@@ -35,7 +37,7 @@ function Movies({
   }, []);
   return (
     <>
-      <Header isLoggedIn={!isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} />
       <main className="movies">
         <SearchForm
           onSearch={onSearch}
@@ -44,13 +46,14 @@ function Movies({
           onCheckbox={onCheckbox}
           isShort={isShort}
         />
-        {/* <Preloader /> */}
+        {!isLoading ? (
         <MoviesCardList
           isErrorLoadingMessage={isErrorLoadingMessage}
           movies={movies}
           handleSaveMovie={handleSaveMovie}
+          onDelete={onDelete}
           saveMovieId={saveMovieId}
-        />
+        />) : (<Preloader />)}
       </main>
       <Footer />
     </>

@@ -13,11 +13,11 @@ export class Api {
 
   async register(name, email, password) {
     const res = await fetch(`${this._baseUrl}/signup`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ name, email, password }),
       headers: {
         ...this._headers,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
     return this._checkRequest(res);
@@ -25,10 +25,10 @@ export class Api {
 
   async login(email, password) {
     const res = await fetch(`${this._baseUrl}/signin`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         ...this._headers,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     });
@@ -37,10 +37,10 @@ export class Api {
 
   async getContent(token) {
     const res = await fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
+      method: 'GET',
       headers: {
         ...this._headers,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     });
@@ -59,7 +59,7 @@ export class Api {
 
   async editUserInfo(data, token) {
     const res = await fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ export class Api {
 
   async deleteMovie(movieId, token) {
     const res = await fetch(`${this._baseUrl}/movies/${movieId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`,
@@ -94,10 +94,10 @@ export class Api {
   }
   async addSaveMovie(movies) {
     const res = await fetch(`${this._baseUrl}/movies`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(movies),
     });
@@ -107,9 +107,9 @@ export class Api {
 
 const api = new Api({
   // baseUrl: "https://api.movies.ovarnakova.nomoredomainsicu.ru",
-  baseUrl: "http://localhost:3000",
+  baseUrl: 'http://localhost:3000',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 export default api;

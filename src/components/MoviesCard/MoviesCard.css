@@ -1,29 +1,33 @@
 .movie {
-  width: 100%;
-  min-height: 218px;
+  max-width: 270px;
+  /* height: 218px; */
   background-color: #222222;
   box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 5%;
+  border-radius: 10px;
   padding: 0;
   margin: 0;
-  z-index: 1;
-  align-content: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
 }
 
 .movie__image {
   width: 100%;
+  background: transparent;
   object-fit: cover;
   aspect-ratio: 2.7/1.51;
+  overflow: hidden;
   cursor: pointer;
   transition: scale 0.3s;
 }
 
-.movie__imgage:hover {
+.movie__image:hover {
   scale: 1.2;
 }
 
 .movie__info {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,10 +36,16 @@
 }
 
 .movie__name {
-  margin: 10px auto 10px 12px;
+  max-width: 206px;
+  /* height: 16.28px; */
+  margin: 14px auto 10px 12px;
   font-size: 13px;
   font-weight: 500;
   line-height: 16.28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
 }
 
 .movie__duration {
@@ -64,7 +74,7 @@
   opacity: 0.8;
 }
 
-.movies__button-delete {
+.movie__button-delete {
   background-image: url(../../images/burger_button-close.svg);
   background-repeat: no-repeat;
   width: 16px;
@@ -76,29 +86,44 @@
   padding: 4px;
 }
 
-.movies__button_active {
+.movie__button_active {
   background: #2be080;
 }
 
-@media screen and (max-width: 1120px) {
-  .movie__name {
-    line-height: 15px;
+@media screen and (max-width: 1150px) {
+  .movie{
+    max-width: 339px;
+  }
+  .movie__image {
+    aspect-ratio: 3.39/1.9;
+    /* height: 190px; */
   }
 }
 
 @media screen and (max-width: 703px) {
+  .movie{
+    /* min-height: 257px; */
+  }
   .movie__image {
     aspect-ratio: 3.39/1.9;
+    /* height: 73.929%; */
   }
 
   .movie__name {
-    line-height: 16.28px;
+    max-width: 180px;
   }
 }
 
-@media screen and (max-width: 485px) {
+@media screen and (max-width: 511px) {
+  .movie{
+    max-width: 300px;
+  }
   .movie__image {
     aspect-ratio: 3/1.68;
+    /* height: 71.489%; */
+  }
+  .movie__name {
+    max-width: 206px;
   }
 
 }

@@ -16,15 +16,15 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
-  const [isLoggedIn, setIsLoggedIn] = React.useState(
-    localStorage.getItem("token") || false
-  );
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isErrorMessage, setIsErrorMessage] = React.useState("");
   const [isSuccessMessage, setIsSuccessMessage] = React.useState("");
   const [allMovies, setAllMovies] = React.useState(
     JSON.parse(localStorage.getItem("allMovies")) || []
   );
-  const [isSaveMovies, setIsSaveMovies] = React.useState([]);
+  const [isSaveMovies, setIsSaveMovies] = React.useState(
+    JSON.parse(localStorage.getItem("saveMovies")) || []
+  );
   const [isShort, setIsShort] = React.useState(
     JSON.parse(localStorage.getItem("short")) || false
   );
@@ -44,6 +44,7 @@ function App() {
       .then((data) => {
         localStorage.setItem("token", data.token);
         setIsLoggedIn(true);
+        setCurrentUser(data.user);
         setIsErrorMessage("");
         navigate("/movies");
       })
@@ -91,10 +92,9 @@ function App() {
           }
           setCurrentUser(data);
           setIsLoggedIn(true);
-          // getCardsMovies();
         })
-        .catch(() => {
-          setIsLoggedIn(false);
+        .catch((err) => {
+          console.error(err);
         });
     }
   }
@@ -154,6 +154,16 @@ function App() {
         .finally(() => {
           setIsLoading(false);
         });
+
+      const token = localStorage.getItem("token");
+      MainApi.getInitialMovies(token)
+        .then((data) => {
+          setIsSaveMovies(data);
+          localStorage.setItem("saveMovies", JSON.stringify(data));
+        })
+        .catch((err) => {
+          console.log(`Ошибка ${err}`);
+        });
     } else {
       const dataMovies = searchMovies(allMovies, query);
       const filterMovies = littleMovies(dataMovies, isShort);
@@ -197,7 +207,6 @@ function App() {
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,
     })
-
       .then((movie) => {
         setIsSaveMovies([movie, ...isSaveMovies]);
         localStorage.setItem(
@@ -209,17 +218,27 @@ function App() {
         console.log(`Ошибка ${err}`);
       });
   }
-
-  
-  // function getCardsMovies(jwt) {
-  //   MainApi.getInitialMovies(jwt)
-  //     .then((data) => {
-  //       setIsSaveMovies(data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`Ошибка ${err}`);
-  //     });
-  // }
+  // функция удаления фильма
+  function handleDelete(movieId) {
+    const token = localStorage.getItem("token");
+    console.log(movieId._id);
+    MainApi.deleteMovie(movieId._id, token)
+      .then(() => {
+        setIsSaveMovies((state) => state.filter((c) => c._id !== movieId._id));
+        localStorage.setItem(
+          "saveMovies",
+          JSON.stringify(
+            isSaveMovies.filter((item) => item._id !== movieId._id)
+          )
+        );
+        setMovies((state) => state.filter((c) => c._id !== movieId._id));
+        localStorage.setItem(
+          "movies",
+          JSON.stringify(movies.filter((item) => item._id !== movieId._id))
+        );
+      })
+      .catch(() => {});
+  }
 
   function Exit() {
     localStorage.removeItem("token");
@@ -255,6 +274,7 @@ function App() {
                 onCheckbox={handleCheckbox}
                 isShort={isShort}
                 handleSaveMovie={handleSaveMovie}
+                onDelete={handleDelete}
                 saveMovieId={saveMovieId}
               />
             }
@@ -270,6 +290,7 @@ function App() {
                 isSaveMovies={isSaveMovies}
                 setIsSaveMovies={setIsSaveMovies}
                 saveMovieId={saveMovieId}
+                onDelete={handleDelete}
               />
             }
           />
@@ -291,7 +312,7 @@ function App() {
             path="/signup"
             element={
               <Register
-                isLoggedIn={!isLoggedIn}
+                isLoggedIn={isLoggedIn}
                 onSubmit={handleSubmitRegister}
                 isErrorMessage={isErrorMessage}
               />
@@ -302,7 +323,7 @@ function App() {
             element={
               <Login
                 onSubmit={handleSubmitLogin}
-                isLoggedIn={!isLoggedIn}
+                isLoggedIn={isLoggedIn}
                 isErrorMessage={isErrorMessage}
                 setIsErrorMessage={setIsErrorMessage}
               />
