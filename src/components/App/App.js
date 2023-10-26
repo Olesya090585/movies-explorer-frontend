@@ -134,9 +134,9 @@ function App() {
         .then((res) => {
           setAllMovies(res);
           localStorage.setItem("allMovies", JSON.stringify(res));
+          // ПОИСК
           const dataMovies = searchMovies(res, query);
           const filterMovies = littleMovies(dataMovies, isShort);
-          console.log(filterMovies);
           localStorage.setItem("movies", JSON.stringify(filterMovies));
           localStorage.setItem("query", query);
           setErrorLoadingMessage("");
