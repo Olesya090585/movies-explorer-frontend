@@ -6,7 +6,7 @@ import { EMAIL_REGEX } from '../../utils/constans';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
 function Login({ onSubmit, isErrorMessage, setIsErrorMessage }) {
-  const { values, handleChange, errors, setErrors, isValid, resetForm } = useFormAndValidation();
+  const { values, handleChange, errors, isValid} = useFormAndValidation();
 
   function handleSubmit(e) {
     e.preventDefault();

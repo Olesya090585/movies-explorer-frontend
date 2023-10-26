@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -36,7 +36,6 @@ function App() {
   const saveMovieId = (id) => isSaveMovies.some((card) => card.movieId === id);
   const [isErrorLoadingMessage, setErrorLoadingMessage] = React.useState("");
   const navigate = useNavigate();
-  const location = useLocation();
 
   //функция логина пользователя
   function handleSubmitLogin({ email, password }) {
@@ -50,18 +49,21 @@ function App() {
       })
       .catch((err) => {
         if (err.status === 400) {
-          return setIsErrorMessage("Вы ввели неправильный логин или пароль");
+          setIsErrorMessage("Вы ввели неправильный логин или пароль.");
+        } else if (err.status === 401) {
+          setIsErrorMessage(
+            "При авторизации произошла ошибка. Токен не передан или передан не в том формате."
+          );
+        } else if (err.status === 409) {
+          setIsErrorMessage(
+            "При авторизации произошла ошибка. Переданный токен некорректен."
+          );
         }
-        setIsErrorMessage("При авторизации произошла ошибка");
       });
   }
-  // .finally(() => {
-  //   setIsSbmitting(false);
-  // });
+
   //функция регистрации пользователя
   function handleSubmitRegister({ name, email, password }) {
-    // setIsSbmitting(true);
-    console.log(name);
     MainApi.register(name, email, password)
       .then(() => {
         navigate("/signin");
@@ -70,17 +72,11 @@ function App() {
       })
       .catch((err) => {
         if (err.status === 409) {
-          return setIsErrorMessage(
-            "Пользователь с таким email уже зарегистирован"
-          );
+          setIsErrorMessage("Пользователь с таким email уже зарегистирован.");
+        } else if (err.status === 401) {
+          setIsErrorMessage("При регистрации пользователя произошла ошибка.");
         }
-        setIsErrorMessage(
-          "Переданы некорректные данные при создании пользователя"
-        );
       });
-    // .finally(() => {
-    //   setIsSbmitting(false);
-    // });
   }
   function checkToken() {
     const jwt = localStorage.getItem("token");
@@ -105,7 +101,6 @@ function App() {
   //функция редактирования страницы пользователя
   function handleEditProfile(data) {
     const token = localStorage.getItem("token");
-    // setIsSbmitting(true);
     MainApi.editUserInfo(data, token)
       .then(() => {
         setCurrentUser({
@@ -117,14 +112,12 @@ function App() {
         setIsErrorMessage("");
       })
       .catch((err) => {
-        if (err.status === 11000) {
-          setIsErrorMessage("Пользователь с таким email уже существует");
+        if (err.status === 409) {
+          setIsErrorMessage("Пользователь с таким email уже существует.");
+        } else if (err.status === 401) {
+          setIsErrorMessage("При обновлении профиля произошла ошибка.");
         }
-        setIsErrorMessage("Произошла ошибка при сохранении изменений");
       });
-    // .finally(() => {
-    //   setIsSbmitting(false);
-    // });
   }
   //функция обработки фильмов
   function handleGetMovies(query) {
@@ -142,12 +135,12 @@ function App() {
           setErrorLoadingMessage("");
           setMovies(filterMovies);
           if (filterMovies.length === 0) {
-            setErrorLoadingMessage("По вашему запросу ничего не найдено");
+            setErrorLoadingMessage("По вашему запросу ничего не найдено.");
           }
         })
         .catch((err) => {
           setErrorLoadingMessage(
-            "Во время запроса произошла ошибка, пожалуйста подождите"
+            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
           );
           console.log(`Ошибка ${err}`);
         })
@@ -172,7 +165,9 @@ function App() {
       setErrorLoadingMessage("");
       setMovies(filterMovies);
       if (filterMovies.length === 0) {
-        setErrorLoadingMessage("По вашему запросу ничего не найдено");
+        setErrorLoadingMessage("По вашему запросу ничего не найдено.");
+      } else {
+        setErrorLoadingMessage("");
       }
     }
   }
@@ -188,6 +183,11 @@ function App() {
       localStorage.setItem("movies", JSON.stringify(filterMovies));
       localStorage.setItem("query", isQuery);
       setMovies(filterMovies);
+      if (filterMovies.length === 0) {
+        setErrorLoadingMessage("По вашему запросу ничего не найдено.");
+      } else {
+        setErrorLoadingMessage("");
+      }
     }
   }
 
@@ -219,33 +219,25 @@ function App() {
       });
   }
   // функция удаления фильма
-  function handleDelete(movieId) {
+  function handleDelete(movie) {
     const token = localStorage.getItem("token");
-    console.log(movieId._id);
-    MainApi.deleteMovie(movieId._id, token)
+    MainApi.deleteMovie(movie._id, token)
       .then(() => {
-        setIsSaveMovies((state) => state.filter((c) => c._id !== movieId._id));
+        setIsSaveMovies((state) => state.filter((c) => c._id !== movie._id));
         localStorage.setItem(
           "saveMovies",
-          JSON.stringify(
-            isSaveMovies.filter((item) => item._id !== movieId._id)
-          )
-        );
-        setMovies((state) => state.filter((c) => c._id !== movieId._id));
-        localStorage.setItem(
-          "movies",
-          JSON.stringify(movies.filter((item) => item._id !== movieId._id))
+          JSON.stringify(isSaveMovies.filter((item) => item._id !== movie._id))
         );
       })
       .catch(() => {});
   }
 
   function Exit() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("saveMovies");
-    localStorage.removeItem("movies");
-    // localStorage.removeItem("checkbox");
+    localStorage.clear();
+    setMovies([]);
+    setIsSaveMovies([]);
     setIsQuery("");
+    setIsShort(false);
     navigate("/");
     setIsLoggedIn(false);
   }
@@ -276,6 +268,7 @@ function App() {
                 handleSaveMovie={handleSaveMovie}
                 onDelete={handleDelete}
                 saveMovieId={saveMovieId}
+                isSaveMovies={isSaveMovies}
               />
             }
           />

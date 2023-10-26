@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox.js";
 import "../SearchForm/SearchForm.css";
 
 function SearchForm({ onSearch, isQuery, setIsQuery, onCheckbox, isShort }) {
+  const [inputError, setInputError] = useState("");
   function hundleSubmit(e) {
     e.preventDefault();
-    onSearch(isQuery);
+    if (isQuery.trim() === "") {
+      setInputError("Введите ключевое слово");
+    } else {
+      onSearch(isQuery);
+    }
   }
 
   return (
@@ -25,9 +30,17 @@ function SearchForm({ onSearch, isQuery, setIsQuery, onCheckbox, isShort }) {
           />
           <button className="search__button" type="submit"></button>
         </form>
+        {
+          <span
+            className={`search__error ${
+              inputError ? "search__error_active" : ""
+            }`}
+          >
+            {inputError}
+          </span>
+        }
         <FilterCheckbox onCheckbox={onCheckbox} isShort={isShort} />
       </div>
-      {/* <FilterCheckbox onCheckbox={onCheckbox} isShort={isShort} /> */}
     </aside>
   );
 }

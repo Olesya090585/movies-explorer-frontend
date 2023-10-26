@@ -10,76 +10,74 @@ import { searchMovies, littleMovies } from "../../utils/utils";
 function SavedMovies({
   handleIsLogin,
   isLoggedIn,
-  setIsSaveMovies,
   isSaveMovies,
+  setIsSaveMovies,
   saveMovieId,
-  onDelete
+  onDelete,
 }) {
-  const [isSearchMovies, setIsSearchMovies] = useState([]);
-  const [isFilterMovies, setIsFilterMovies] = useState([]);
-  const [isLitlleMovies, setIsLitlleMovies] = useState(false);
-  // const FilterLitlleMovies = !isSearchMovies
-  //   ? littleMovies(isSaveMovies)
-  //   : littleMovies(isFilterMovies);
-  
-    useEffect(() => {
+  const [isShort, setIsShort] = React.useState(false);
+  const [isQuery, setIsQuery] = React.useState("");
+  const [isErrorLoadingMessage, setErrorLoadingMessage] = React.useState("");
+
+  useEffect(() => {
     const token = localStorage.getItem("token");
     MainApi.getInitialMovies(token)
       .then((data) => {
         setIsSaveMovies(data);
+        localStorage.setItem("saveMovies", JSON.stringify(data));
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
       });
-  }, []);
+  }, [setIsSaveMovies]);
 
-  function handleSubmit(query) {
-    setIsSearchMovies(query);
-    console.log(query);
-    const filterMovies = searchMovies(isSaveMovies, query);
-    console.log(filterMovies);
-    setIsFilterMovies(filterMovies);
-    localStorage.setItem("savemovies", JSON.stringify(filterMovies));
-    localStorage.setItem("query", query);
-    console.log(isFilterMovies);
+  function handleSearch(query) {
+    const dataMovies = searchMovies(
+      JSON.parse(localStorage.getItem("saveMovies")),
+      query
+    );
+    const filterMovies = littleMovies(dataMovies, isShort);
+    setIsSaveMovies(filterMovies);
     if (filterMovies.length === 0) {
-      return("По вашему запросу ничего не найдено");
-    }}
-
-    function handleSaveChechbox(e) {
-      if (e.target.checked) {
-        setIsLitlleMovies(true);
-      } else {
-        setIsLitlleMovies(false);
-      }
+      setErrorLoadingMessage("По вашему запросу ничего не найдено");
+    } else {
+      setErrorLoadingMessage("");
     }
-    useEffect(() => {
-      setIsFilterMovies(state => state.filter(movie => isSaveMovies.find(card => card._id === movie._id)));
-    }, [isSaveMovies]);
-    // useEffect(() => {
-    //   const storedSaveMovies = localStorage.getItem("savemovies");
-    //   if (storedSaveMovies) {
-    //     setIsSaveMovies(JSON.parse(storedSaveMovies));
-    //   }
-    // }, []);
+  }
+
+  function handleCheckbox(event) {
+    const checkbox = event.target.checked;
+    setIsShort(checkbox);
+    const dataMovies = searchMovies(
+      JSON.parse(localStorage.getItem("saveMovies")),
+      isQuery
+    );
+    const filterMovies = littleMovies(dataMovies, checkbox);
+    setIsSaveMovies(filterMovies);
+    if (filterMovies.length === 0) {
+      setErrorLoadingMessage("По вашему запросу ничего не найдено");
+    } else {
+      setErrorLoadingMessage("");
+    }
+  }
 
   return (
     <>
       <Header handleIsLogin={handleIsLogin} isLoggedIn={isLoggedIn} />
       <main className="saved-movies">
         <SearchForm
-          onSearch={handleSubmit}
-          onLitlleMovies={isLitlleMovies}
-          isQuery={isSearchMovies} 
-          setIsQuery={setIsSearchMovies}
-          onCheckbox={handleSaveChechbox}
+          onSearch={handleSearch}
+          isQuery={isQuery}
+          setIsQuery={setIsQuery}
+          onCheckbox={handleCheckbox}
+          isShort={isShort}
         />
         <MoviesCardList
-          saveMovieId={saveMovieId}
-          // movies={isSaveMovies}
           movies={isSaveMovies}
+          saveMovieId={saveMovieId}
+          isSaveMovies={isSaveMovies}
           onDelete={onDelete}
-          // isSaveMovies={isSaveMovies}
+          isErrorLoadingMessage={isErrorLoadingMessage}
         />
       </main>
       <Footer />
