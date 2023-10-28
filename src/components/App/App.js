@@ -100,16 +100,18 @@ function App() {
 
   //функция редактирования страницы пользователя
   function handleEditProfile(data) {
+    console.log(data)
     const token = localStorage.getItem("token");
     MainApi.editUserInfo(data, token)
-      .then(() => {
+      .then((data) => {
         setCurrentUser({
           ...currentUser,
           name: data.name,
-          email: data.email,
+          email: data.email
         });
         setIsSuccessMessage("Данные изменены успешно");
         setIsErrorMessage("");
+        console.log(data.name);
       })
       .catch((err) => {
         if (err.status === 409) {
@@ -305,7 +307,7 @@ function App() {
             path="/signup"
             element={
               <Register
-                isLoggedIn={isLoggedIn}
+                isLoggedIn={!isLoggedIn}
                 onSubmit={handleSubmitRegister}
                 isErrorMessage={isErrorMessage}
               />
@@ -316,7 +318,7 @@ function App() {
             element={
               <Login
                 onSubmit={handleSubmitLogin}
-                isLoggedIn={isLoggedIn}
+                isLoggedIn={!isLoggedIn}
                 isErrorMessage={isErrorMessage}
                 setIsErrorMessage={setIsErrorMessage}
               />
