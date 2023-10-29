@@ -1,0 +1,114 @@
+.movie-list {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 70px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.movie-list_error{
+  align-items: center;
+  margin: 0 auto;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.movie-list__container {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 270px));
+  column-gap: 20px;
+  row-gap: 31px;
+  list-style: none;
+  justify-content: center;
+  align-content: center;
+}
+.movie-list__show {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  display: flex;
+}
+.movie-list__show_size {
+  padding-top: 85px;
+  padding-bottom: 85px;
+  display: flex;
+}
+.movie-list__button {
+  border: 1px solid #424242;
+  width: 320px;
+  height: 36px;
+  margin: 0 auto;
+  background: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.52px;
+  cursor: pointer;
+}
+.movie-list__button:hover {
+  opacity: 0.8;
+}
+.movie-list__button_hidden {
+  display: none;
+}
+@media screen and (max-width: 1150px) {
+  .movie-list {
+    padding: 0 30px;
+    gap: 30px;
+  }
+  .movie-list__container {
+    width: calc(100% - (auto * 2));
+    column-gap: 30px;
+    row-gap: 36px;
+    grid-template-columns: repeat(3, minmax(0, 339px));
+  }
+  .movie-list__show {
+    padding-top: 50px;
+    padding-bottom: 80px;
+  }
+  .movie-list__show_size {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 907px) {
+  .movie-list__container {
+    grid-template-columns: repeat(2, minmax(0, 400px));
+    gap: calc((100vw - 768px) / (907 - 768) * (32 - 36) + 36px)
+      calc((100vw - 768px) / (907 - 768) * (20 - 30) + 30px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .movie-list {
+    padding: calc((100vw - 320px) / (768 - 320) * (70 - 40) + 40px)
+      calc((100vw - 320px) / (768 - 320) * (30 - 10) + 10px) 30px;
+  }
+
+  .movie-list__container {
+    grid-template-columns: repeat(2, minmax(0, 339px));
+    gap: calc((100vw - 320px) / (768 - 320) * (36 - 30) + 30px) 30px;
+  }
+}
+@media screen and (max-width: 511px) {
+  .movie-list {
+    padding: 40px 10px 0px;
+    gap: 30px;
+  }
+  .movie-list__container {
+    width: calc(100% - (auto * 2));
+    grid-template-columns: repeat(1, minmax(0, 300px));
+    gap: 19px;
+  }
+  .movie-list__show {
+    padding-top: 50px;
+  }
+  .movie-list__button {
+    width: 240px;
+  }
+  .movie-list__show_size {
+    padding-bottom: 90px;
+  }
+}

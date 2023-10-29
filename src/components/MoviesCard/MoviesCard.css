@@ -1,0 +1,114 @@
+.movie {
+  max-width: 270px;
+  background-color: #222222;
+  box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.movie__image {
+  width: 100%;
+  background: transparent;
+  object-fit: cover;
+  aspect-ratio: 2.7/1.51;
+  overflow: hidden;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+
+.movie__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  position: relative;
+}
+
+.movie__name {
+  max-width: 206px;
+  margin: 14px auto 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16.28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+}
+
+.movie__duration {
+  margin: 0px auto 14px 12px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13.31px;
+  color: #8b8b8b;
+}
+
+.movie__button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  bottom: 37px;
+  right: 12px;
+  object-position: 100% 100%;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: transparent;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.movie__button:hover {
+  opacity: 0.8;
+}
+
+.movie__button-delete {
+  background-image: url(../../images/burger_button-close.svg);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  background-position: 50% 50%;
+  background-size: 70%;
+  border-radius: 0%;
+  border: none;
+  padding: 4px;
+}
+
+.movie__button_active {
+  background: #2be080;
+}
+
+@media screen and (max-width: 1150px) {
+  .movie {
+    max-width: 339px;
+  }
+  .movie__image {
+    aspect-ratio: 3.39/1.9;
+  }
+}
+
+@media screen and (max-width: 703px) {
+  .movie__image {
+    aspect-ratio: 3.39/1.9;
+  }
+  .movie__name {
+    max-width: 180px;
+  }
+}
+
+@media screen and (max-width: 511px) {
+  .movie {
+    max-width: 300px;
+  }
+  .movie__image {
+    aspect-ratio: 3/1.68;
+  }
+  .movie__name {
+    max-width: 206px;
+  }
+}

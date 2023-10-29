@@ -1,0 +1,137 @@
+.promo {
+  background-color: #073042;
+}
+.promo__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-right: 70px;
+  padding-left: 70px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(300px, 640px), 310px;
+  column-gap: 190px;
+  grid-template-areas:
+    "title illustration"
+    "subtitle illustration"
+    "link link";
+  padding-bottom: 75px;
+  padding-top: 75px;
+}
+.promo__title {
+  line-height: 58px;
+  max-width: 640px;
+  font-size: 50px;
+  font-weight: 400;
+  grid-area: title;
+  margin: 0;
+}
+.promo__subtitle {
+  margin-top: -25px;
+  margin-bottom: 0;
+  line-height: 15.73px;
+  max-width: 310px;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 50%;
+  grid-area: subtitle;
+}
+.promo__link {
+  margin-top: 83px;
+  width: 129px;
+  height: 36px;
+  border-radius: 3px;
+  outline: 1px solid rgba(255, 255, 255, 0.6);
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  grid-area: link;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+.promo__link:hover{
+  opacity: 0.7;
+}
+.promo__illustration {
+  width: 310px;
+  height: 304px;
+  object-fit: contain;
+  grid-area: illustration;
+  background-image: url(../../images/landing-logo.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 1120px) {
+  .promo__container {
+    width: calc(100% - (auto * 2));
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "illustration"
+      "title"
+      "subtitle"
+      "link";
+    padding-bottom: 76px;
+    padding-top: 140px;
+    text-align: center;
+  }
+  .promo__title {
+    line-height: 51px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0 auto;
+    hyphens: auto;
+  }
+  .promo__illustration {
+    margin: 0 auto 48px auto;
+  }
+  .promo__subtitle {
+    margin: 21px auto 0 auto;
+    max-width: 260px;
+  }
+  br {
+    display: none;
+  }
+  .promo__link {
+    margin: 0 auto;
+    margin-top: 91px;
+  }
+}
+@media screen and (max-width: 646px) {
+  .promo__container {
+    justify-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    padding-top: 70px;
+  }
+  .promo__illustration {
+    width: 210px;
+    height: 206px;
+    margin: 0 auto 44px auto;
+  }
+  .promo__title {
+    align-self: center;
+    line-height: 38px;
+    font-size: 30px;
+    width: 300px;
+    letter-spacing: -0.04em;
+    text-align: center;
+  }
+  br {
+    display: block;
+  }
+  .promo__subtitle {
+    margin: 24px auto 0 auto;
+    max-width: 260px;
+  }
+  .promo__link {
+    margin-top: 80px;
+  }
+}
