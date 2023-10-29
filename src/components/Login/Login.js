@@ -6,7 +6,7 @@ import { EMAIL_REGEX } from '../../utils/constans';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
 function Login({ onSubmit, isErrorMessage, setIsErrorMessage }) {
-  const { values, handleChange, errors, isValid} = useFormAndValidation();
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,9 +17,10 @@ function Login({ onSubmit, isErrorMessage, setIsErrorMessage }) {
     handleChange(e);
     setIsErrorMessage('');
   }
+
   useEffect(() => {
     setIsErrorMessage('');
-  }, [setIsErrorMessage]);
+  }, []);
 
   return (
     <section className="login">

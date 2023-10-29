@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm.js";
-import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
-import Footer from "../Footer/Footer";
-import Preloader from "../Preloader/Preloader";
-import "../Movies/Movies.css";
-import useResponsive from "../../hooks/useResponsive";
+import React, { useEffect, useState } from 'react';
+import Header from '../Header/Header';
+import SearchForm from '../SearchForm/SearchForm.js';
+import MoviesCardList from '../MoviesCardList/MoviesCardList.js';
+import Footer from '../Footer/Footer';
+import Preloader from '../Preloader/Preloader';
+import '../Movies/Movies.css';
+import useResponsive from '../../hooks/useResponsive';
 
 function Movies({
   isLoggedIn,
@@ -42,25 +42,20 @@ function Movies({
     setTimeout(() => {
       setVisibleMovies(initialVisibleMovies);
     }, 0);
-  }, [windowWidth]);
+  }, [windowWidth, isQuery]);
 
   useEffect(() => {
-    const storedMovies = localStorage.getItem("movies");
+    const storedMovies = localStorage.getItem('movies');
     if (storedMovies) {
       setMovies(JSON.parse(storedMovies));
     }
   }, []);
+
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
       <main className="movies">
-        <SearchForm
-          onSearch={onSearch}
-          isQuery={isQuery}
-          setIsQuery={setIsQuery}
-          onCheckbox={onCheckbox}
-          isShort={isShort}
-        />
+        <SearchForm onSearch={onSearch} isQuery={isQuery} setIsQuery={setIsQuery} onCheckbox={onCheckbox} isShort={isShort} />
         {!isLoading ? (
           <MoviesCardList
             isErrorLoadingMessage={isErrorLoadingMessage}

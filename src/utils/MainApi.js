@@ -14,11 +14,8 @@ export class Api {
   async register(name, email, password) {
     const res = await fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
+      headers: this._headers,
       body: JSON.stringify({ name, email, password }),
-      headers: {
-        ...this._headers,
-        'Content-Type': 'application/json',
-      },
     });
     return this._checkRequest(res);
   }
@@ -26,10 +23,7 @@ export class Api {
   async login(email, password) {
     const res = await fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      headers: {
-        ...this._headers,
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({ email, password }),
     });
     return this._checkRequest(res);
@@ -40,7 +34,6 @@ export class Api {
       method: 'GET',
       headers: {
         ...this._headers,
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     });
@@ -92,12 +85,13 @@ export class Api {
     });
     return this._checkRequest(res);
   }
+
   async addSaveMovie(movies) {
     const res = await fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: {
+        ...this._headers,
         Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
       },
       body: JSON.stringify(movies),
     });
@@ -106,10 +100,10 @@ export class Api {
 }
 
 const api = new Api({
-  // baseUrl: "https://api.movies.ovarnakova.nomoredomainsicu.ru",
-  baseUrl: 'http://localhost:3000',
-  // headers: {
-  //   'Content-Type': 'application/json',
-  // },
+  baseUrl: "https://api.movies.ovarnakova.nomoredomainsicu.ru",
+  // baseUrl: 'http://localhost:3000',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 export default api;

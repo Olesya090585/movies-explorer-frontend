@@ -12,6 +12,7 @@ function MoviesCardList({
   onDelete,
   saveMovieId,
   isSaveMovies,
+  setIsSaveMovies,
 }) {
   const location = useLocation();
 
@@ -29,7 +30,7 @@ function MoviesCardList({
   return (
     <section className="movie-list">
       {isErrorLoadingMessage ? (
-        <span className='movie-list_error'>{isErrorLoadingMessage}</span>
+        <span className="movie-list_error">{isErrorLoadingMessage}</span>
       ) : (
         <ul className="movie-list__container">
           {movies.slice(0, visibleMovies).map((card) => (
@@ -39,7 +40,8 @@ function MoviesCardList({
               handleSaveMovie={handleSaveMovie}
               onDelete={onDelete}
               saveMovieId={saveMovieId}
-              isSaveMovies={isSaveMovies}></MoviesCard>
+              isSaveMovies={isSaveMovies}
+              setIsSaveMovies={setIsSaveMovies}></MoviesCard>
           ))}
         </ul>
       )}
